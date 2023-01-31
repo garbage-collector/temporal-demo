@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,5 +16,9 @@ func main() {
 		})
 	})
 
-	r.Run()
+	err := r.Run()
+	if err != nil {
+		fmt.Print(err)
+		os.Exit(1)
+	}
 }
