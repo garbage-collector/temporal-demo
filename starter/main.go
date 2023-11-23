@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/othalla/temporal-demo/hello"
+	"github.com/garbage-collector/temporal-demo/emancipation"
 	"go.temporal.io/sdk/client"
 )
 
@@ -21,7 +21,7 @@ func main() {
 		TaskQueue: "hello-world",
 	}
 
-	we, err := c.ExecuteWorkflow(context.Background(), workflowOptions, hello.Workflow, "Temporal")
+	we, err := c.ExecuteWorkflow(context.Background(), workflowOptions, emancipation.Workflow, "Miley Cyrus")
 	if err != nil {
 		log.Fatalln("Unable to execute workflow", err)
 	}

@@ -1,4 +1,4 @@
-module github.com/othalla/temporal-demo
+module github.com/garbage-collector/temporal-demo
 
 go 1.19
 

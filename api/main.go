@@ -10,9 +10,9 @@ import (
 
 func main() {
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
+	r.GET("/talk", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
+			"message": "Hello Miley! Let's talk for hours.",
 		})
 	})
 

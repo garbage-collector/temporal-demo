@@ -6,7 +6,7 @@ import (
 	"go.temporal.io/sdk/client"
 	"go.temporal.io/sdk/worker"
 
-	"github.com/othalla/temporal-demo/hello"
+	"github.com/garbage-collector/temporal-demo/emancipation"
 )
 
 func main() {
@@ -19,9 +19,13 @@ func main() {
 
 	w := worker.New(c, "hello-world", worker.Options{})
 
-	w.RegisterWorkflow(hello.Workflow)
-	w.RegisterActivity(hello.ActivityHello)
-	w.RegisterActivity(hello.ActivityPing)
+	w.RegisterWorkflow(emancipation.Workflow)
+	w.RegisterActivity(emancipation.BuyMyselfFlowers)
+	w.RegisterActivity(emancipation.WriteMyNameInTheSand)
+	w.RegisterActivity(emancipation.TalkToMyselfForHours)
+	w.RegisterActivity(emancipation.SayThingsYouDontUnderstand)
+	w.RegisterActivity(emancipation.TakeMyselfDancing)
+	w.RegisterActivity(emancipation.HoldMyOwnHand)
 
 	err = w.Run(worker.InterruptCh())
 	if err != nil {

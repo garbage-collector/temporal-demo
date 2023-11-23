@@ -12,7 +12,7 @@ docker-compose up -d temporal-server temporal-web
 ## Start the API
 
 ```bash
-docker-compose up -d api
+docker-compose up -d myself
 ```
 
 - port: `8080`
