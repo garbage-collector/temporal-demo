@@ -3,7 +3,7 @@
 ## Start Temporal
 
 ```bash
-docker-compose up -d temporal-server temporal-web
+docker-compose up -d temporal-server temporal-ui
 ```
 
 - server port: `7233`

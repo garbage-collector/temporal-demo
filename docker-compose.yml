@@ -1,7 +1,8 @@
 version: '3.8'
 services:
   myself:
-    build: .
+    platform: linux/amd64
+    image: myself
     restart: always
     ports:
       - 8080:8080
@@ -31,7 +32,7 @@ services:
       - POSTGRES_PWD=temporal
       - POSTGRES_SEEDS=temporal-postgresql
       - DYNAMIC_CONFIG_FILE_PATH=config/dynamicconfig/development.yaml
-    image: temporalio/auto-setup:${TEMPORAL_SERVER_TAG:-1.18.5}
+    image: temporalio/auto-setup:${TEMPORAL_SERVER_TAG:-1.22.2}
     restart: always
     healthcheck:
       test:
@@ -56,17 +57,17 @@ services:
         condition: service_healthy
     environment:
       - TEMPORAL_CLI_ADDRESS=temporal-server:7233
-    image: temporalio/admin-tools:${TEMPORAL_SERVER_TAG:-1.18.5}
+    image: temporalio/admin-tools:${TEMPORAL_SERVER_TAG:-1.22.2}
     restart: always
     stdin_open: true
     tty: true
-  temporal-web:
+  temporal-ui:
+    container_name: temporal-ui
     depends_on:
-      temporal-server:
-        condition: service_healthy
+      - temporal-server
     environment:
       - TEMPORAL_ADDRESS=temporal-server:7233
-    image: temporalio/ui:${TEMPORAL_WEB_TAG:-2.9.1}
-    restart: always
+      - TEMPORAL_CORS_ORIGINS=http://localhost:3000
+    image: temporalio/ui:${TEMPORAL_UI_VERSION:-2.21.0}
     ports:
       - "10000:8080"
