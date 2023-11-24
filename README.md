@@ -1,3 +1,5 @@
+![go workflow](https://github.com/garbage-collector/temporal-demo/actions/workflows/go.yml/badge.svg)
+
 # temporal-demo
 
 ## Start Temporal
