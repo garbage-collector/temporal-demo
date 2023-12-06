@@ -4,12 +4,20 @@
 
 ## Start Temporal
 
+Install Temporal CLI:
+
 ```bash
-docker-compose up -d temporal-server temporal-ui
+curl -sSf https://temporal.download/cli.sh | sh
+```
+
+Start Temporal dev server:
+
+```bash
+temporal server start-dev
 ```
 
 - server port: `7233`
-- web port: `10000`
+- UI port: `8233`
 
 ## Start the API
 
@@ -22,7 +30,7 @@ pack build myself --buildpack paketo-buildpacks/go --builder paketobuildpacks/bu
 ### Run the docker image
 
 ```bash
-docker-compose up -d myself
+docker-compose up -d
 ```
 
 - port: `8080`
