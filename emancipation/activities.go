@@ -27,7 +27,7 @@ func TalkToMyselfForHours(ctx context.Context) error {
 	}
 	response, err := client.Get("http://localhost:8080/talk")
 	if err != nil {
-		return err
+		return fmt.Errorf("fail to talk to myself: %w", err)
 	}
 
 	if response.StatusCode != http.StatusOK {
