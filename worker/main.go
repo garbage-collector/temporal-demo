@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"go.temporal.io/sdk/activity"
 	"go.temporal.io/sdk/client"
 	"go.temporal.io/sdk/worker"
 
@@ -17,15 +18,12 @@ func main() {
 	}
 	defer c.Close()
 
-	w := worker.New(c, "hello-world", worker.Options{})
+	w := worker.New(c, "demo", worker.Options{})
 
 	w.RegisterWorkflow(emancipation.Workflow)
-	w.RegisterActivity(emancipation.BuyMyselfFlowers)
-	w.RegisterActivity(emancipation.WriteMyNameInTheSand)
-	w.RegisterActivity(emancipation.TalkToMyselfForHours)
-	w.RegisterActivity(emancipation.SayThingsYouDontUnderstand)
-	w.RegisterActivity(emancipation.TakeMyselfDancing)
-	w.RegisterActivity(emancipation.HoldMyOwnHand)
+	for activityName, activityFn := range emancipation.Activities {
+		w.RegisterActivityWithOptions(activityFn, activity.RegisterOptions{Name: activityName})
+	}
 
 	err = w.Run(worker.InterruptCh())
 	if err != nil {

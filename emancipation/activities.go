@@ -9,6 +9,24 @@ import (
 	"go.temporal.io/sdk/activity"
 )
 
+var (
+	BuyMyselfFlowersName           = "Buy myself flowers"
+	WriteMyNameInTheSandName       = "Write my name in the sand"
+	TalkToMyselfForHoursName       = "Talk to myself for hours"
+	SayThingsYouDontUnderstandName = "Say things you don't understand"
+	TakeMyselfDancingName          = "Take myself dancing"
+	HoldMyOwnHandName              = "Hold my own hand"
+)
+
+var Activities = map[string]interface{}{
+	BuyMyselfFlowersName:           BuyMyselfFlowers,
+	WriteMyNameInTheSandName:       WriteMyNameInTheSand,
+	TalkToMyselfForHoursName:       TalkToMyselfForHours,
+	SayThingsYouDontUnderstandName: SayThingsYouDontUnderstand,
+	TakeMyselfDancingName:          TakeMyselfDancing,
+	HoldMyOwnHandName:              HoldMyOwnHand,
+}
+
 func BuyMyselfFlowers(ctx context.Context, quantity int) (string, error) {
 	activity.GetLogger(ctx).Info("Welcome to the florist")
 	return fmt.Sprintf("Thanks for buying %d orchids", quantity), nil

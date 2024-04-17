@@ -17,8 +17,8 @@ func main() {
 	defer c.Close()
 
 	workflowOptions := client.StartWorkflowOptions{
-		ID:        "hello-Miley-Cyrus",
-		TaskQueue: "hello-world",
+		ID:        "Miley Cyrus - Flowers",
+		TaskQueue: "demo",
 	}
 
 	we, err := c.ExecuteWorkflow(context.Background(), workflowOptions, emancipation.Workflow, "Miley Cyrus")

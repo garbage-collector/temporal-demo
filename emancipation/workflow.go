@@ -21,37 +21,37 @@ func Workflow(ctx workflow.Context, name string) (string, error) {
 	logger.Info("Emancipation workflow started", "name", name)
 
 	var result string
-	err := workflow.ExecuteActivity(ctx, BuyMyselfFlowers, 5).Get(ctx, &result)
+	err := workflow.ExecuteActivity(ctx, BuyMyselfFlowersName, 5).Get(ctx, &result)
 	if err != nil {
 		logger.Error("Activity failed.", "Error", err)
 		return "", err
 	}
 
-	err = workflow.ExecuteActivity(ctx, WriteMyNameInTheSand, name).Get(ctx, &result)
+	err = workflow.ExecuteActivity(ctx, WriteMyNameInTheSandName, name).Get(ctx, &result)
 	if err != nil {
 		logger.Error("Activity failed.", "Error", err)
 		return "", err
 	}
 
-	err = workflow.ExecuteActivity(ctx, TalkToMyselfForHours).Get(ctx, nil)
+	err = workflow.ExecuteActivity(ctx, TalkToMyselfForHoursName).Get(ctx, nil)
 	if err != nil {
 		logger.Error("Activity failed.", "Error", err)
 		return "", err
 	}
 
-	err = workflow.ExecuteActivity(ctx, SayThingsYouDontUnderstand, "gloubi-boulga").Get(ctx, &result)
+	err = workflow.ExecuteActivity(ctx, SayThingsYouDontUnderstandName, "gloubi-boulga").Get(ctx, &result)
 	if err != nil {
 		logger.Error("Activity failed.", "Error", err)
 		return "", err
 	}
 
-	err = workflow.ExecuteActivity(ctx, TakeMyselfDancing).Get(ctx, &result)
+	err = workflow.ExecuteActivity(ctx, TakeMyselfDancingName).Get(ctx, &result)
 	if err != nil {
 		logger.Error("Activity failed.", "Error", err)
 		return "", err
 	}
 
-	err = workflow.ExecuteActivity(ctx, HoldMyOwnHand).Get(ctx, nil)
+	err = workflow.ExecuteActivity(ctx, HoldMyOwnHandName).Get(ctx, nil)
 	if err != nil {
 		logger.Error("Activity failed.", "Error", err)
 		return "", err
